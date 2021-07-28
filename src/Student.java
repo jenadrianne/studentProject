@@ -3,7 +3,7 @@
  * @author SonicMaster ASUS
  *
  */
-public class Student {
+public class Student implements Comparable {
 	/*
 	 * State Variables
 	 */
@@ -114,5 +114,26 @@ public class Student {
 	          
 	   // Compare the data members and return accordingly 
 	    return Long.compare(this.idNumber, stud.idNumber) == 0;
+	}
+
+	@Override
+	public int compareTo(Object o) {
+		int compare=(int) ((Student)o).getIdNumber();
+        /* For Ascending order*/
+        return (int) (this.idNumber-compare);
+	}
+	
+	/**
+	 * to CSV foramt
+	 * @return
+	 */
+	public String toCSVFormt() {
+		String CSV_SEPARATOR = ",";
+		String result = this.idNumber +CSV_SEPARATOR
+						+ this.titleName + CSV_SEPARATOR
+						+ this.firstName +CSV_SEPARATOR
+						+ this.lastName + CSV_SEPARATOR
+						+  this.birthday.toString() +CSV_SEPARATOR ;
+		return result; 
 	}
 }

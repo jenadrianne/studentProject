@@ -156,13 +156,28 @@ public class CourseWorkStudent extends Student{
 	 @Override
 	public String toString() {		
 		String result = super.toString(); 
-		result += "\n Assignment 1: " + this.assignment1 +
-		           "\n Assignment 2: " + this.assignment2 +
-		           "\n Practical Work: " + this.practicalWork +
-		           "\n Final Oral Examination: " + this.finalExamination +
-		           "\n Weighted Average: " + this.weightedAverage + 
-		           "\n Final Grade: " + this.finalGrade;
+		result += "\nAssignment 1: " + this.assignment1 +
+		           "\nAssignment 2: " + this.assignment2 +
+		           "\nPractical Work: " + this.practicalWork +
+		           "\nFinal Oral Examination: " + this.finalExamination +
+		           "\nWeighted Average: " + this.weightedAverage + 
+		           "\nFinal Grade: " + this.finalGrade;
 		return result; 
 	}
 	
+	 /**
+	  * CSV format
+	  * @return
+	  */
+	 public String toCSVFormt() {	
+		 	String CSV_SEPARATOR = ",";
+			String result = super.toCSVFormt(); 
+			result += this.assignment1 + CSV_SEPARATOR
+			          + this.assignment2 + CSV_SEPARATOR
+			          + this.practicalWork + CSV_SEPARATOR
+			          + this.finalExamination + CSV_SEPARATOR+CSV_SEPARATOR+CSV_SEPARATOR
+			          + this.weightedAverage + CSV_SEPARATOR
+			          + this.finalGrade + CSV_SEPARATOR ;
+			return result; 
+	}
 }

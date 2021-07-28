@@ -4,7 +4,6 @@ public class ResearchStudent extends Student{
 	/*
 	 * State Variables
 	 */
-	private double proposalComponent;
 	private double oralPresentations;
 	private double finalThesis;
 	private double weightedAverage;
@@ -14,7 +13,6 @@ public class ResearchStudent extends Student{
 	 * Default Constructor
 	 */
 	public ResearchStudent() {
-		this.proposalComponent = 0.0;
 		this.oralPresentations = 0.0; 
 		this.finalThesis = 0.0;
 		this.weightedAverage = 0.0; 
@@ -35,10 +33,8 @@ public class ResearchStudent extends Student{
 	 * @param finalThesis
 	 */
 	public ResearchStudent(String titleName , String FirstName, String lastName, 
-			long idNumber , int month, int day, int year, 
-			double proposalComponent, double oralPresentations, double finalThesis) {
+			long idNumber , int month, int day, int year, double oralPresentations, double finalThesis) {
 		super(titleName, FirstName, lastName, idNumber, month, day, year); 
-		this.proposalComponent = proposalComponent;
 		this.oralPresentations = oralPresentations; 
 		this.finalThesis = finalThesis;
 		this.weightedAverage = 0.0; 
@@ -58,7 +54,6 @@ public class ResearchStudent extends Student{
 	public ResearchStudent(String titleName , String FirstName, String lastName, 
 			long idNumber , int month, int day, int year) {
 		super(titleName, FirstName, lastName, idNumber, month, day, year); 
-		this.proposalComponent = 0.0;
 		this.oralPresentations = 0.0; 
 		this.finalThesis = 0.0;
 		this.weightedAverage = 0.0; 
@@ -70,14 +65,6 @@ public class ResearchStudent extends Student{
 	 * Note : for weightedAverage and Final Grade there are no setters
 	 * to avoid direct input
 	 */
-	public double getProposalComponent() {
-		return proposalComponent;
-	}
-
-	public void setProposalComponent(double proposalComponent) {
-		this.proposalComponent = proposalComponent;
-	}
-
 	public double getOralPresentations() {
 		return oralPresentations;
 	}
@@ -137,4 +124,35 @@ public class ResearchStudent extends Student{
 	     this.weightedAverage += this.finalThesis  * 0.80;
 	  }
 
+	 /**
+	  * Overrides toString method. 
+	  * Prints the Research Student as well as the Student Information
+	  */
+	 @Override
+	public String toString() {		
+		String result = super.toString(); 
+		result += "\nOral Presentation: " + this.oralPresentations +
+		           "\nFinal Thesis: " + this.finalThesis +
+		           "\nWeighted Average: " + this.weightedAverage + 
+		           "\nFinal Grade: " + this.finalGrade;
+		return result; 
+	}
+	 
+	 /**
+	  * To CSV Format
+	  * @return
+	  */
+	 public String toCSVFormt() {	
+		 	String CSV_SEPARATOR = ",";
+			String result = super.toCSVFormt(); 
+			result +=  CSV_SEPARATOR
+			          + CSV_SEPARATOR
+			          + CSV_SEPARATOR
+			          + CSV_SEPARATOR+
+			          + this.oralPresentations + CSV_SEPARATOR
+			          + this.finalThesis + CSV_SEPARATOR
+			          + this.weightedAverage + CSV_SEPARATOR
+			          + this.finalGrade + CSV_SEPARATOR ;
+			return result; 
+	}
 }
